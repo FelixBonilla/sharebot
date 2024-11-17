@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor de Reglas de Respuesta</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Gestor de Reglas de Respuesta</h1>
+    
+    <div class="rule-creation-section">
+      <h2>Crear Nueva Regla</h2>
+      
+      <div class="input-group">
+        <label for="triggerInput">Palabra Clave:</label>
+        <input type="text" id="triggerInput" placeholder="Ej: hola, gracias, urgente" maxlength="50" required>
+      </div>
+
+      <div class="input-group">
+        <label for="responseInput">Respuesta Automática:</label>
+        <textarea id="responseInput" placeholder="Escribe tu respuesta aquí" maxlength="500" rows="4" required></textarea>
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="caseSensitive">
+        <label for="caseSensitive">Sensible a mayúsculas</label>
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="exactMatch">
+        <label for="exactMatch">Coincidencia exacta</label>
+      </div>
+
+      <div class="input-group">
+        <label for="contextSelect">Contexto de Aplicación:</label>
+        <select id="contextSelect">
+          <option value="all">Todos los sitios</option>
+          <option value="email">Solo correo electrónico</option>
+          <option value="chat">Solo chats</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="fileInput">Adjuntar archivo:</label>
+        <input type="file" id="fileInput">
+      </div>
+
+      <button id="addRule" class="primary-btn">Añadir Regla</button>
+    </div>
+
+    <div class="rules-list-section">
+      <h2>Reglas Actuales</h2>
+      <div id="rulesList" class="scrollable-list"></div>
+    </div>
+
+    <div class="import-export-section">
+      <button id="exportRules" class="secondary-btn">Exportar Reglas</button>
+      <input type="file" id="importRules" accept=".csv" style="display: none;">
+      <button id="importRulesButton" class="secondary-btn">Importar Reglas</button>
+    </div>
+  </div>
+
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <h2>Editar Regla</h2>
+      <div class="input-group">
+        <label for="editTriggerInput">Palabra Clave:</label>
+        <input type="text" id="editTriggerInput" maxlength="50" required>
+      </div>
+      <div class="input-group">
+        <label for="editResponseInput">Respuesta Automática:</label>
+        <textarea id="editResponseInput" maxlength="500" rows="4" required></textarea>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="editCaseSensitive">
+        <label for="editCaseSensitive">Sensible a mayúsculas</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="editExactMatch">
+        <label for="editExactMatch">Coincidencia exacta</label>
+      </div>
+      <div class="input-group">
+        <label for="editContextSelect">Contexto de Aplicación:</label>
+        <select id="editContextSelect">
+          <option value="all">Todos los sitios</option>
+          <option value="email">Solo correo electrónico</option>
+          <option value="chat">Solo chats</option>
+        </select>
+      </div>
+      <div id="editFileInfo"></div>
+      <div class="input-group">
+        <label for="editFileInput">Cambiar archivo:</label>
+        <input type="file" id="editFileInput">
+      </div>
+      <div class="modal-buttons">
+        <button id="saveEditButton" class="primary-btn">Guardar Cambios</button>
+        <button id="cancelEditButton" class="secondary-btn">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
